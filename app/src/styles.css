@@ -1,0 +1,278 @@
+/* ===================== Fonts (local Halyard) ===================== */
+@font-face { font-family:"Halyard Display"; src:url("/fonts/Halyard-Display-Regular.ttf")  format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Halyard Display"; src:url("/fonts/Halyard-Display-Medium.ttf")   format("truetype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Halyard Display"; src:url("/fonts/Halyard-Display-SemiBold.ttf") format("truetype"); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:"Halyard Display"; src:url("/fonts/Halyard-Display-Bold.ttf")     format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Halyard Text"; src:url("/fonts/Halyard-Text-Regular.ttf")  format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Halyard Text"; src:url("/fonts/Halyard-Text-Medium.ttf")   format("truetype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Halyard Text"; src:url("/fonts/Halyard-Text-SemiBold.ttf") format("truetype"); font-weight:600; font-style:normal; font-display:swap; }
+
+/* ===================== Tokens (bookings page) ===================== */
+:root{
+  --purple:#8000ff;
+  --purple-press:#6a00d6;
+  --ink:#2b2b2b;
+  --ink-strong:#1d1d1d;
+  --line:#e8e8e8;
+  --chip:#f2f2f2;
+  --pink:#e5006d;
+  --red:#e03131;
+  --green-bg:#eef8ee;
+  --green-line:#7bc47f;
+  --maxw:1680px;
+}
+*{box-sizing:border-box;}
+html,body,#root{margin:0;padding:0;}
+body{
+  font-family:"Halyard Text","Halyard Display",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;}
+.disp{font-family:"Halyard Display",sans-serif;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 64px;}
+
+/* ===================== Header ===================== */
+.site-header{padding-top:28px;}
+.topbar{display:flex;align-items:center;gap:28px;}
+.logo{display:flex;align-items:center;gap:10px;color:var(--purple);text-decoration:none;flex:0 0 auto;}
+.logo svg{display:block;}
+.logo .word{font-family:"Halyard Display";font-weight:700;font-size:30px;letter-spacing:-1px;color:var(--purple);}
+.search{
+  flex:1 1 auto;max-width:560px;display:flex;align-items:center;gap:12px;
+  background:#f7f7f7;border:1px solid #ededed;border-radius:12px;
+  padding:14px 18px;color:#8a8a8a;font-size:16px;font-weight:500;
+}
+.search svg{flex:0 0 auto;margin-left:auto;}
+.top-right{display:flex;align-items:center;gap:26px;margin-left:auto;flex:0 0 auto;}
+.top-right .link{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink-strong);font-weight:600;font-size:16px;}
+.top-right .lang{font-weight:600;color:var(--ink-strong);font-size:16px;}
+.avatar{width:44px;height:44px;border-radius:50%;border:1px solid #e3e3e3;background-image:linear-gradient(135deg,#c9bdf2,#a98ee8);}
+.site-nav{margin-top:22px;}
+.navrow{display:flex;align-items:center;gap:34px;}
+.navrow a{text-decoration:none;color:var(--ink);font-weight:500;font-size:16.5px;white-space:nowrap;}
+.navrow .cats{display:flex;align-items:center;gap:10px;font-weight:600;}
+.navrow .app{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--ink);}
+
+/* ===================== Page title + tabs ===================== */
+.bookings-main{margin-top:40px;}
+.bookings-main h1{font-family:"Halyard Display";font-weight:700;font-size:34px;letter-spacing:-0.5px;color:var(--ink-strong);margin:0 0 26px;}
+.tabs{display:flex;gap:40px;border-bottom:1px solid var(--line);}
+.tab{padding-bottom:14px;font-weight:600;font-size:18px;color:#9a9a9a;text-decoration:none;position:relative;background:none;border:0;cursor:pointer;font-family:inherit;}
+.tab.active{color:var(--purple);}
+.tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;background:var(--purple);border-radius:2px;}
+
+/* ===================== Booking list ===================== */
+.list{display:flex;flex-direction:column;gap:28px;margin-top:34px;padding-bottom:80px;}
+.card{border:1px solid var(--line);border-radius:16px;padding:26px;overflow:hidden;background:#fff;}
+.card-inner{display:flex;gap:34px;}
+.thumb{flex:0 0 230px;height:230px;border-radius:12px;overflow:hidden;background:#e9e9ec;position:relative;}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);opacity:.9;}
+.cbody{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
+.row1{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
+.ctitle{font-family:"Halyard Display";font-weight:700;font-size:23px;line-height:1.25;color:var(--ink-strong);margin:0;}
+.price{font-family:"Halyard Display";font-weight:700;font-size:22px;color:var(--ink-strong);white-space:nowrap;}
+.bid{display:inline-block;margin-top:14px;border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:15px;color:var(--ink);}
+.bid b{font-weight:700;color:var(--ink-strong);}
+.divider{border:0;border-top:1px dashed #dcdcdc;margin:20px 0;}
+.row2{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
+.meta{display:flex;flex-direction:column;gap:12px;min-width:0;align-items:flex-start;}
+.meta .line{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:16.5px;font-weight:500;}
+.meta .line svg{flex:0 0 auto;color:#8a8a8a;}
+.inclusions{color:var(--pink);font-weight:600;font-size:16px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;}
+.row2-right{display:flex;flex-direction:column;align-items:flex-end;gap:16px;border-left:1px dashed #dcdcdc;padding-left:34px;align-self:stretch;justify-content:center;}
+.status-cancelled{display:flex;align-items:center;gap:10px;color:var(--red);font-weight:600;font-size:16.5px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:228px;background:var(--chip);color:var(--purple);border:0;border-radius:14px;padding:15px 24px;font-family:"Halyard Display";font-weight:600;font-size:17px;cursor:pointer;text-decoration:none;box-sizing:border-box;}
+.btn:hover{background:#ececec;}
+
+/* Brag Receipt CTA — primary action, stacked below View details */
+.btn-brag{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:228px;padding:15px 24px;
+  border:0;border-radius:14px;cursor:pointer;box-sizing:border-box;
+  font-family:"Halyard Display";font-weight:600;font-size:17px;color:#fff;letter-spacing:.2px;
+  background:linear-gradient(135deg,#4E00C9 0%,#8000ff 55%,#AC68F2 100%);
+  box-shadow:0 8px 20px rgba(108,0,214,.32), inset 0 1px 0 rgba(255,255,255,.25);
+  transition:transform .14s ease, box-shadow .14s ease, filter .14s ease;}
+.btn-brag:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 12px 26px rgba(108,0,214,.42), inset 0 1px 0 rgba(255,255,255,.3);}
+.btn-brag:active{transform:translateY(0);}
+.btn-brag .spark{font-size:18px;line-height:1;}
+
+/* ===================== Rating widget ===================== */
+.rating{margin-top:22px;background:var(--green-bg);border-top:2px solid var(--green-line);border-radius:0 0 4px 4px;padding:26px 30px;position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.rating::before{content:"";position:absolute;top:-9px;left:34px;width:16px;height:16px;background:var(--green-bg);border-left:2px solid var(--green-line);border-top:2px solid var(--green-line);transform:rotate(45deg);}
+.rating .q{font-family:"Halyard Display";font-weight:600;font-size:19px;color:var(--ink-strong);}
+.stars{display:flex;gap:12px;margin-top:14px;}
+.stars button{background:none;border:0;padding:0;cursor:pointer;color:#c9c9c9;line-height:0;}
+.stars button.on{color:#f5b50a;}
+.submit{border:0;border-radius:12px;padding:16px 40px;font-family:"Halyard Display";font-weight:600;font-size:17px;white-space:nowrap;}
+.submit[disabled]{background:#c4c4c4;color:#fff;cursor:not-allowed;}
+.submit:not([disabled]){background:var(--purple);color:#fff;cursor:pointer;}
+.rating-left{display:flex;flex-direction:column;}
+
+/* ===================== Brag Receipt modal ===================== */
+.br-overlay{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  background:transparent;
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  animation:br-fade .18s ease;
+}
+@keyframes br-fade{from{opacity:0}to{opacity:1}}
+@keyframes br-pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+
+.br-modal{
+  background:#fff;border-radius:28px;
+  box-shadow:0 30px 90px rgba(20,12,50,.26), 0 2px 10px rgba(20,12,50,.12);
+  padding:14px 30px 24px;
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+  width:min(94vw,560px);max-height:95vh;overflow:hidden;
+  animation:br-pop .22s cubic-bezier(.2,.8,.25,1);
+}
+
+/* top: tabs row + promo banner */
+.br-top{width:100%;display:flex;flex-direction:column;gap:12px;}
+/* "Retro Magic" palette: #44113E/#6A1452 plum · #FF49C1 pink · #FFB3AE/#FFF7AD warm */
+.br-banner{position:relative;overflow:visible;cursor:pointer;
+  transition:transform .14s ease, box-shadow .14s ease;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  background:linear-gradient(105deg,#44113E 0%,#6A1452 28%,#FF49C1 66%,#FFB3AE 90%,#FFF7AD 100%);
+  color:#fff;font-family:"Halyard Display";font-weight:600;font-size:15px;letter-spacing:.2px;
+  padding:13px 20px;border-radius:16px;text-align:center;
+  box-shadow:0 10px 24px rgba(255,73,193,.32), inset 0 1px 0 rgba(255,255,255,.4), inset 0 -10px 20px rgba(68,17,62,.32);}
+/* clipped layer holds the gloss + shimmer so artifacts can overhang the edges */
+.br-banner .bn-clip{position:absolute;inset:0;border-radius:16px;overflow:hidden;z-index:1;pointer-events:none;}
+.br-banner .bn-clip::before{content:"";position:absolute;left:0;right:0;top:0;height:48%;
+  background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,0));}
+.br-banner .bn-clip::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(75deg,transparent 36%,rgba(255,255,255,.42) 50%,transparent 64%);
+  transform:translateX(-130%);animation:bn-shine 3.4s ease-in-out infinite;}
+@keyframes bn-shine{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+.br-banner .bn-text{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;
+  text-shadow:0 1px 7px rgba(68,17,62,.55);}
+.br-banner .gift{font-size:17px;line-height:1;}
+.br-banner .bn-chev{font-size:19px;font-weight:700;opacity:.95;margin-left:1px;}
+.br-banner:hover{transform:translateY(-1px);box-shadow:0 13px 28px rgba(255,73,193,.4), inset 0 1px 0 rgba(255,255,255,.4), inset 0 -10px 20px rgba(68,17,62,.32);}
+.br-banner:active{transform:translateY(0);}
+.br-banner .bn-art{position:absolute;z-index:3;pointer-events:none;line-height:1;
+  filter:drop-shadow(0 3px 5px rgba(68,17,62,.4));}
+
+/* ===================== "How it works" info card ===================== */
+.info-overlay{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(24,8,24,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);animation:br-fade .18s ease;}
+.info-card{width:min(92vw,420px);max-height:92vh;overflow:hidden;background:#fff;border-radius:24px;
+  box-shadow:0 30px 80px rgba(40,8,40,.45);animation:br-pop .24s cubic-bezier(.2,.8,.25,1);
+  display:flex;flex-direction:column;}
+.info-header{position:relative;overflow:hidden;text-align:center;color:#fff;padding:30px 26px 26px;
+  background:linear-gradient(105deg,#44113E 0%,#6A1452 30%,#FF49C1 70%,#FFB3AE 100%);}
+.info-header::before{content:"";position:absolute;left:0;right:0;top:0;height:46%;
+  background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,0));pointer-events:none;}
+.info-emoji{font-size:42px;line-height:1;position:relative;z-index:2;
+  filter:drop-shadow(0 4px 8px rgba(68,17,62,.4));}
+.info-header h3{font-family:"Halyard Display";font-weight:700;font-size:24px;letter-spacing:-.4px;margin:10px 0 4px;
+  position:relative;z-index:2;text-shadow:0 1px 8px rgba(68,17,62,.4);}
+.info-header p{font-family:"Halyard Text";font-size:14px;opacity:.95;margin:0;position:relative;z-index:2;}
+.info-art{position:absolute;z-index:1;pointer-events:none;line-height:1;filter:drop-shadow(0 3px 5px rgba(68,17,62,.4));}
+.info-x{position:absolute;top:14px;right:14px;z-index:3;width:32px;height:32px;border-radius:50%;border:0;
+  background:rgba(255,255,255,.28);color:#fff;font-size:18px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;}
+.info-x:hover{background:rgba(255,255,255,.45);}
+.info-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:20px;overflow:auto;}
+.info-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
+.info-steps li{display:flex;gap:14px;align-items:flex-start;}
+.info-steps .step-n{flex:none;width:24px;text-align:center;color:#C01B7A;
+  font-family:"Halyard Display";font-weight:700;font-size:20px;line-height:1.25;}
+.info-steps li > div{display:flex;flex-direction:column;gap:2px;}
+.info-steps b{font-family:"Halyard Display";font-weight:600;font-size:16px;color:#1d1d1d;}
+.info-steps span{font-family:"Halyard Text";font-size:14px;color:#6a6a72;line-height:1.45;}
+.info-cta{border:0;border-radius:14px;padding:15px;cursor:pointer;color:#fff;
+  font-family:"Halyard Display";font-weight:600;font-size:16px;
+  background:linear-gradient(105deg,#6A1452,#FF49C1);box-shadow:0 8px 20px rgba(255,73,193,.34);
+  transition:filter .14s ease;}
+.info-cta:hover{filter:brightness(1.06);}
+
+/* header: style tabs (left) + close button (right) */
+.br-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.br-tabs{display:flex;gap:4px;background:#f1f1f4;border-radius:999px;padding:4px;}
+.br-tabs button{border:0;background:none;cursor:pointer;font-family:"Halyard Display";font-weight:600;
+  font-size:14px;color:#73737d;padding:8px 20px;border-radius:999px;transition:all .12s ease;}
+.br-tabs button.on{background:#fff;color:var(--purple);box-shadow:0 1px 3px rgba(20,12,50,.12);}
+
+/* portal shape pills */
+.br-pills{display:flex;gap:8px;}
+.br-pills button{border:1px solid #e3e3ea;background:#fff;cursor:pointer;font-family:"Halyard Text";font-weight:600;
+  font-size:13px;color:#73737d;padding:8px 18px;border-radius:999px;transition:all .12s ease;}
+.br-pills button.on{background:var(--purple);border-color:var(--purple);color:#fff;}
+.br-x{width:34px;height:34px;border-radius:50%;border:0;background:#f1f1f4;color:#3a3a40;
+  font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;}
+.br-x:hover{background:#e7e7ec;}
+
+.br-preview{border-radius:18px;overflow:hidden;box-shadow:0 16px 44px rgba(10,5,30,.22);}
+
+/* footer container under the receipt */
+.br-foot{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.br-foot-label{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#a0a0a9;}
+
+/* circular color thumbnails (theme picker) */
+.br-swatches{display:flex;align-items:center;justify-content:center;gap:13px;}
+.br-swatch{width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;padding:0;
+  box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(0,0,0,.10);
+  transition:transform .12s ease,box-shadow .12s ease;}
+.br-swatch:hover{transform:scale(1.1);}
+.br-swatch.active{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--purple);transform:scale(1.08);}
+
+/* platform share buttons (white glyph on solid brand color) */
+.br-share{display:flex;align-items:flex-start;justify-content:center;gap:18px;flex-wrap:wrap;}
+.br-share-item{display:flex;flex-direction:column;align-items:center;gap:7px;border:0;background:none;cursor:pointer;font-family:"Halyard Text";padding:0;}
+.br-ico{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;
+  box-shadow:0 4px 12px rgba(20,12,50,.16);transition:transform .12s ease,filter .12s ease;}
+.br-share-item:hover .br-ico{transform:translateY(-3px);filter:brightness(1.07);}
+.br-share-item .lbl{font-size:12px;font-weight:600;color:#5a5a62;}
+.br-share.icons-only .br-ico{width:56px;height:56px;}
+
+/* divider + section rows */
+.br-rule{width:100%;height:1px;background:#ededf1;}
+.br-sec{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;}
+
+/* stacked footer: gradient thumbnails above the share buttons */
+.br-foot .br-swatches{gap:12px;flex-wrap:wrap;}
+.br-foot .br-share{gap:16px;flex-wrap:wrap;}
+.br-foot .br-share.icons-only .br-ico{width:48px;height:48px;}
+
+.br-toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);background:#1a1030;color:#fff;
+  padding:11px 20px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);
+  z-index:1100;animation:br-fade .2s ease;}
+
+/* ===================== Responsive ===================== */
+@media (max-width:1000px){
+  .wrap{padding:0 28px;}
+  .card-inner{flex-direction:column;}
+  .thumb{flex-basis:auto;width:100%;height:220px;}
+  .row2{flex-direction:column;}
+  .row2-right{border-left:0;padding-left:0;align-items:stretch;}
+}
+@media (max-width:760px){
+  .wrap{padding:0 18px;}
+  .topbar{flex-wrap:wrap;gap:14px;}
+  .search{order:3;flex-basis:100%;max-width:none;}
+  .top-right{gap:16px;}
+  .top-right .lang{display:none;}
+  .site-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .navrow{gap:22px;}
+  .navrow .app{display:none;}
+  .bookings-main h1{font-size:28px;}
+  .ctitle{font-size:20px;}
+  .row1{flex-wrap:wrap;}
+  .rating{flex-direction:column;align-items:stretch;gap:16px;}
+  .submit{width:100%;}
+}
+/* Modal becomes a bottom sheet on phones */
+@media (max-width:560px){
+  .br-overlay{padding:0;align-items:flex-end;}
+  .br-modal{width:100%;max-width:100vw;max-height:96vh;border-radius:24px 24px 0 0;padding:12px 16px 20px;gap:14px;}
+  .br-share{gap:14px;}
+  .br-ico{width:46px;height:46px;}
+  .br-share.icons-only .br-ico{width:50px;height:50px;}
+  .br-share-item .lbl{font-size:11px;}
+  .br-bar{gap:12px;padding:10px 14px;flex-wrap:wrap;}
+}
