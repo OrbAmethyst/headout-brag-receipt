@@ -22,6 +22,28 @@ const BrandIcon = ({ name, size = 25 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={ICONS[name]} /></svg>
 );
 
+const ShareGlyph = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M12 15V3" /><path d="M8 7l4-4 4 4" /><path d="M4 13v5a2 2 0 002 2h12a2 2 0 002-2v-5" />
+  </svg>
+);
+
+// Mini shape glyphs for the Portal variant chips
+const SHAPE_PATHS = {
+  arch: <path d="M3 16.5V8a6 6 0 0112 0v8.5z" />,
+  shield: <path d="M9 1.4l6.6 2.8v4.3c0 3.9-2.9 6.1-6.6 7.6-3.7-1.5-6.6-3.7-6.6-7.6V4.2z" />,
+  octagon: <polygon points="6,1.5 12,1.5 16.5,6 16.5,12 12,16.5 6,16.5 1.5,12 1.5,6" />,
+};
+const ShapeIcon = ({ name }) => (
+  <svg viewBox="0 0 18 18" width="17" height="17" fill="currentColor" aria-hidden="true">{SHAPE_PATHS[name]}</svg>
+);
+
+const CloseGlyph = ({ size = 17 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <path d="M6 6l12 12M18 6L6 18" />
+  </svg>
+);
+
 const PORTAL_SHAPES = [
   ["arch", "Arch"],
   ["shield", "Shield"],
@@ -35,6 +57,7 @@ export default function BragReceiptModal({ booking, onClose }) {
   const [scale, setScale] = useState(0.3);
   const [toast, setToast] = useState("");
   const [infoOpen, setInfoOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const cardRef = useRef(null);
   const modalRef = useRef(null);
   const headRef = useRef(null);
@@ -71,12 +94,13 @@ export default function BragReceiptModal({ booking, onClose }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key !== "Escape") return;
-      if (infoOpen) setInfoOpen(false);
+      if (menuOpen) setMenuOpen(false);
+      else if (infoOpen) setInfoOpen(false);
       else onClose();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose, infoOpen]);
+  }, [onClose, infoOpen, menuOpen]);
 
   const flash = (msg) => {
     setToast(msg);
@@ -157,14 +181,14 @@ export default function BragReceiptModal({ booking, onClose }) {
     setTimeout(() => openIntent(`https://wa.me/?text=${enc(text)}`), 500);
   }
 
-  const SHARES = [
+  // Platforms revealed when the share button is tapped.
+  const PLATFORMS = [
     { name: "whatsapp", label: "WhatsApp", bg: "#25D366", onClick: whatsappShare },
     { name: "instagram", label: "Instagram", bg: "#E1306C", onClick: () => shareImage({ fallbackLabel: "Instagram" }) },
     { name: "x", label: "X", bg: "#000000", onClick: () => openIntent(`https://twitter.com/intent/tweet?text=${enc(caption)}&url=${enc(SHARE_URL)}`) },
     { name: "facebook", label: "Facebook", bg: "#1877F2", onClick: () => openIntent(`https://www.facebook.com/sharer/sharer.php?u=${enc(SHARE_URL)}`) },
-    { name: "link", label: "Copy link", bg: "#6B7280", onClick: copyLink },
-    { name: "download", label: "Save PNG", bg: "var(--purple)", onClick: download },
   ];
+  const runMenu = (fn) => { setMenuOpen(false); fn(); };
 
   return (
     <div className="br-overlay" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
@@ -204,33 +228,43 @@ export default function BragReceiptModal({ booking, onClose }) {
           </div>
         </div>
 
-        {/* Footer — gradient thumbnails stacked ABOVE the share buttons
-            (identical layout in Glow and Portal states for uniformity) */}
+        {/* Footer — one line: [variant chips] │ [Share ⇢ fan-out] [Download] */}
         <div className="br-foot" ref={footRef}>
-          {style === "portal" && (
-            <div className="br-pills">
-              {PORTAL_SHAPES.map(([id, lbl]) => (
-                <button key={id} className={shape === id ? "on" : ""} onClick={() => setShape(id)}>{lbl}</button>
-              ))}
+          {menuOpen && <div className="br-menu-backdrop" onClick={() => setMenuOpen(false)} />}
+          <div className="br-bar2">
+            {/* variant chips: colours (Glow) or shapes (Portal) */}
+            <div className="br-variants">
+              {style === "portal"
+                ? PORTAL_SHAPES.map(([id, lbl]) => (
+                    <button key={id} className={"br-vchip" + (shape === id ? " on" : "")} onClick={() => setShape(id)} aria-label={lbl} title={lbl}>
+                      <ShapeIcon name={id} />
+                    </button>
+                  ))
+                : THEME_ORDER.map((id) => (
+                    <button key={id} className={"br-swatch" + (id === themeId ? " active" : "")} style={{ background: THEMES[id].background }} onClick={() => setThemeId(id)} aria-label={THEMES[id].name} title={THEMES[id].name} />
+                  ))}
             </div>
-          )}
 
-          {/* Gradient thumbnails — Glow state only (themes don't apply the same
-              way in the photo-based Portal state) */}
-          {style === "glow" && (
-            <div className="br-swatches">
-              {THEME_ORDER.map((id) => (
-                <button key={id} className={"br-swatch" + (id === themeId ? " active" : "")} style={{ background: THEMES[id].background }} onClick={() => setThemeId(id)} aria-label={THEMES[id].name} title={THEMES[id].name} />
-              ))}
-            </div>
-          )}
+            <span className="br-vsep" />
 
-          <div className="br-share icons-only">
-            {SHARES.map((s) => (
-              <button key={s.name} className="br-share-item" onClick={s.onClick} title={s.label} aria-label={s.label}>
-                <span className="br-ico" style={{ background: s.bg }}><BrandIcon name={s.name} size={22} /></span>
+            {/* share cluster: download · share toggle (fans platforms in an arc) */}
+            <div className="br-cluster">
+              <div className={"br-pop" + (menuOpen ? " open" : "")}>
+                {PLATFORMS.map((s) => (
+                  <button key={s.name} className="br-pico" onClick={() => runMenu(s.onClick)} aria-label={s.label} title={s.label} tabIndex={menuOpen ? 0 : -1}
+                    style={{ background: s.bg }}>
+                    <BrandIcon name={s.name} size={18} />
+                  </button>
+                ))}
+              </div>
+              <button className="br-dl" onClick={download} aria-label="Save image" title="Save image">
+                <BrandIcon name="download" size={18} />
               </button>
-            ))}
+              <button className={"br-sharebtn" + (menuOpen ? " active" : "")} onClick={() => setMenuOpen((v) => !v)} aria-label="Share" aria-expanded={menuOpen}>
+                <span className="ic-share"><ShareGlyph size={18} /></span>
+                <span className="ic-close"><CloseGlyph size={17} /></span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

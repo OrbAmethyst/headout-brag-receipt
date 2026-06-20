@@ -239,6 +239,59 @@ a{color:inherit;}
 .br-foot .br-share{gap:16px;flex-wrap:wrap;}
 .br-foot .br-share.icons-only .br-ico{width:48px;height:48px;}
 
+/* unified single-line footer: [variant chips] │ [share fan-out] [download] */
+.br-menu-backdrop{position:fixed;inset:0;z-index:40;}
+.br-bar2{position:relative;z-index:50;width:100%;display:flex;align-items:center;justify-content:center;gap:14px;}
+.br-variants{display:flex;align-items:center;gap:10px;}
+.br-bar2 .br-swatch{width:28px;height:28px;}
+.br-vsep{width:1px;height:30px;background:#e4e4ea;flex:none;}
+
+/* portal shape chips */
+.br-vchip{width:30px;height:30px;border-radius:50%;border:1px solid #e3e3ea;background:#f4f4f7;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#8a8a93;padding:0;
+  transition:background .15s ease, color .15s ease, border-color .15s ease, transform .12s ease;}
+.br-vchip:hover{transform:scale(1.06);}
+.br-vchip.on{background:var(--purple);border-color:var(--purple);color:#fff;}
+
+/* share cluster */
+.br-cluster{position:relative;display:flex;align-items:center;gap:8px;}
+
+/* platforms as a horizontal row overlay above the share button — no card/bg,
+   just floating icons (no layout shift) */
+.br-pop{position:absolute;bottom:calc(100% + 12px);right:0;z-index:60;
+  display:flex;align-items:center;gap:10px;
+  opacity:0;transform:translateY(8px);pointer-events:none;
+  transition:opacity .2s ease, transform .26s cubic-bezier(.2,.85,.25,1);}
+.br-pop.open{opacity:1;transform:none;pointer-events:auto;}
+/* flat, solid platform buttons */
+.br-pico{width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;color:#fff;flex:none;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(20,12,50,.22);
+  transform:translateY(10px) scale(.6);opacity:0;
+  transition:transform .28s cubic-bezier(.2,.9,.3,1.12), opacity .2s ease, filter .12s ease;}
+.br-pop.open .br-pico{transform:none;opacity:1;}
+.br-pop.open .br-pico:nth-child(1){transition-delay:.02s;}
+.br-pop.open .br-pico:nth-child(2){transition-delay:.06s;}
+.br-pop.open .br-pico:nth-child(3){transition-delay:.10s;}
+.br-pop.open .br-pico:nth-child(4){transition-delay:.14s;}
+.br-pop.open .br-pico:hover{filter:brightness(1.08);transform:translateY(-2px);}
+
+/* share toggle — clean flat off-white fill (share ⇆ thin ×) */
+.br-sharebtn{position:relative;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;flex:none;
+  background:#f1f1f4;color:#45454d;transition:transform .16s ease, background .16s ease;}
+.br-sharebtn:hover{background:#e7e7ec;transform:translateY(-1px);}
+.br-sharebtn .ic-share,.br-sharebtn .ic-close{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  transition:opacity .2s ease, transform .26s cubic-bezier(.2,.85,.25,1);}
+.br-sharebtn .ic-close{opacity:0;transform:rotate(-90deg) scale(.6);}
+.br-sharebtn.active{background:#ececf0;}
+.br-sharebtn.active .ic-share{opacity:0;transform:rotate(90deg) scale(.6);}
+.br-sharebtn.active .ic-close{opacity:1;transform:none;}
+
+/* download — soft lavender accent (pretty, not overwhelming) */
+.br-dl{width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;flex:none;
+  background:rgba(128,0,255,.10);color:var(--purple);
+  display:flex;align-items:center;justify-content:center;transition:background .14s ease, transform .16s ease;}
+.br-dl:hover{background:rgba(128,0,255,.18);transform:translateY(-1px);}
+
 .br-toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);background:#1a1030;color:#fff;
   padding:11px 20px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);
   z-index:1100;animation:br-fade .2s ease;}
