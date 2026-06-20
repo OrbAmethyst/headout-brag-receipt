@@ -92,15 +92,6 @@ export const COLOSSEUM_RECEIPT = {
 // Bookings shown on the "My bookings → Completed" page (matches the screenshot).
 export const BOOKINGS = [
   {
-    id: "32010686",
-    title: "Uffizi Gallery Timed Entry Tickets: Tickets + Digital Guidebook",
-    image: "/assets/uffizi.jpg",
-    price: "$0",
-    date: "09 Jun 2026, 12:00pm",
-    badge: null,
-    status: "cancelled",
-  },
-  {
     id: "31682962",
     title:
       "Colosseum Underground & Arena Floor: Fast-Track Entry + Audio Guide",
@@ -113,5 +104,14 @@ export const BOOKINGS = [
     // The Brag Receipt this booking unlocks. Mirrors the README layout exactly,
     // with the canonical content from the handoff.
     receipt: COLOSSEUM_RECEIPT,
+  },
+  {
+    id: "32010686",
+    title: "Uffizi Gallery Timed Entry Tickets: Tickets + Digital Guidebook",
+    image: "/assets/uffizi.jpg",
+    price: "$0",
+    date: "09 Jun 2026, 12:00pm",
+    badge: null,
+    status: "cancelled",
   },
 ];
