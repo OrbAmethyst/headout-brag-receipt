@@ -1,6 +1,45 @@
-# Handoff: Headout Brag Receipt
+# Headout Brag Receipt
 
-## Overview
+[![Build](https://github.com/OrbAmethyst/headout-brag-receipt/actions/workflows/build.yml/badge.svg)](https://github.com/OrbAmethyst/headout-brag-receipt/actions/workflows/build.yml)
+
+Turn a completed Headout experience into a personalized, shareable **Brag Receipt** —
+an "Achievement Unlocked" story card with stats, a memorable-moment quote, a tear-off
+receipt stub, and four interchangeable gradient themes. Includes a **Glow** glass card,
+photo-based **Portal** variants, social sharing, a rewards info card, and a **Remotion**
+motion graphic.
+
+## What's inside
+
+| Folder | Description |
+|--------|-------------|
+| `app/` | React + Vite app — *My bookings* page → click **Brag Receipt** → Glow/Portal card, theme switcher, share (WhatsApp/Instagram/X/Facebook/Copy/Save), PNG export, rewards info card. |
+| `motion/` | [Remotion](https://www.remotion.dev) project that renders a 1080×1920 promo video (`out/brag-receipt-motion.mp4`). |
+| `assets/`, `fonts/` | Headout logo, Colosseum/Uffizi imagery, Halyard typefaces. |
+| `Brag Receipt - Glow.dc.html` | Original design reference. |
+
+## Quick start
+
+```bash
+# Web app
+cd app
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build → app/dist
+
+# Motion graphic (Remotion)
+cd motion
+npm install
+npm run studio     # live editor
+npm run render     # → out/brag-receipt-motion.mp4
+```
+
+Requires **Node.js 18+** (CI builds on Node 20).
+
+---
+
+## Design handoff
+
+### Overview
 The **Brag Receipt** turns a completed Headout experience into a personalized, shareable story card instead of a plain booking confirmation. This package documents the **Instagram-Story format (1080 × 1920)**: an "Achievement Unlocked" card featuring the experience name, personalized stats, a memorable-moment quote, and a tear-off receipt stub with a barcode. The hero treatment is a **dark gradient with a soft light-bloom glowing up through frosted-glass stat cards**, rendered across four interchangeable gradient themes.
 
 ## About the Design Files
