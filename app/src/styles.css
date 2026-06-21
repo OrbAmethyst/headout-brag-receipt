@@ -145,9 +145,10 @@ a{color:inherit;}
 .br-banner .bn-clip::before{content:"";position:absolute;left:0;right:0;top:0;height:48%;
   background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,0));}
 .br-banner .bn-clip::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(75deg,transparent 36%,rgba(255,255,255,.42) 50%,transparent 64%);
-  transform:translateX(-130%);animation:bn-shine 3.4s ease-in-out infinite;}
-@keyframes bn-shine{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+  background:linear-gradient(72deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);
+  transform:translateX(-120%);animation:bn-shine 5.6s ease-in-out infinite;}
+/* glare sweeps across (0–48%), then pauses off-screen before the next pass */
+@keyframes bn-shine{0%{transform:translateX(-120%)}48%{transform:translateX(120%)}100%{transform:translateX(120%)}}
 .br-banner .bn-text{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;
   text-shadow:0 1px 7px rgba(68,17,62,.55);}
 .br-banner .gift{font-size:17px;line-height:1;}
@@ -158,8 +159,8 @@ a{color:inherit;}
   filter:drop-shadow(0 3px 5px rgba(68,17,62,.4));}
 
 /* ===================== "How it works" info card ===================== */
-.info-overlay{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:24px;
-  background:rgba(24,8,24,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);animation:br-fade .18s ease;}
+.info-overlay{position:absolute;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(20,6,22,.74);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);animation:br-fade .18s ease;}
 .info-card{width:min(92vw,420px);max-height:92vh;overflow:hidden;background:#fff;border-radius:24px;
   box-shadow:0 30px 80px rgba(40,8,40,.45);animation:br-pop .24s cubic-bezier(.2,.8,.25,1);
   display:flex;flex-direction:column;}
@@ -193,10 +194,16 @@ a{color:inherit;}
 
 /* header: style tabs (left) + close button (right) */
 .br-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.br-tabs{display:flex;gap:4px;background:#f1f1f4;border-radius:999px;padding:4px;}
-.br-tabs button{border:0;background:none;cursor:pointer;font-family:"Halyard Display";font-weight:600;
-  font-size:14px;color:#73737d;padding:8px 20px;border-radius:999px;transition:all .12s ease;}
-.br-tabs button.on{background:#fff;color:var(--purple);box-shadow:0 1px 3px rgba(20,12,50,.12);}
+.br-tabs{position:relative;display:flex;background:#f1f1f4;border-radius:999px;padding:4px;}
+/* sliding pill indicator */
+.br-tabs .br-tab-thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);
+  background:#fff;border-radius:999px;box-shadow:0 1px 3px rgba(20,12,50,.14);
+  transition:transform .46s cubic-bezier(.16,1,.3,1);}
+.br-tabs.is-portal .br-tab-thumb{transform:translateX(100%);}
+.br-tabs button{position:relative;z-index:1;flex:1;border:0;background:none;cursor:pointer;white-space:nowrap;
+  font-family:"Halyard Display";font-weight:600;font-size:14px;color:#73737d;padding:8px 20px;border-radius:999px;
+  transition:color .22s ease;}
+.br-tabs button.on{color:var(--purple);}
 
 /* portal shape pills */
 .br-pills{display:flex;gap:8px;}

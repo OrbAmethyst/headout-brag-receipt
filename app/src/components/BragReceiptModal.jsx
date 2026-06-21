@@ -196,7 +196,8 @@ export default function BragReceiptModal({ booking, onClose }) {
         {/* Tabs row + promo banner (measured together for the fit calc) */}
         <div className="br-top" ref={headRef}>
           <div className="br-head">
-            <div className="br-tabs">
+            <div className={"br-tabs" + (style === "portal" ? " is-portal" : "")}>
+              <span className="br-tab-thumb" />
               <button className={style === "glow" ? "on" : ""} onClick={() => setStyle("glow")}>Glow</button>
               <button className={style === "portal" ? "on" : ""} onClick={() => setStyle("portal")}>Portals</button>
             </div>
