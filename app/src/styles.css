@@ -116,6 +116,7 @@ a{color:inherit;}
   display:flex;align-items:center;justify-content:center;padding:24px;
   background:transparent;
   backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  overscroll-behavior:contain;
   animation:br-fade .18s ease;
 }
 @keyframes br-fade{from{opacity:0}to{opacity:1}}
