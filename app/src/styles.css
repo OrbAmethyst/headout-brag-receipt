@@ -87,16 +87,23 @@ a{color:inherit;}
 .btn{display:inline-flex;align-items:center;justify-content:center;width:228px;background:var(--chip);color:var(--purple);border:0;border-radius:14px;padding:15px 24px;font-family:"Halyard Display";font-weight:600;font-size:17px;cursor:pointer;text-decoration:none;box-sizing:border-box;}
 .btn:hover{background:#ececec;}
 
-/* Brag Receipt CTA — primary action, stacked below View details */
-.btn-brag{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:228px;padding:15px 24px;
+/* Brag Receipt CTA — Twilight Tides palette + gliding shimmer */
+.btn-brag{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;width:228px;padding:15px 24px;
   border:0;border-radius:14px;cursor:pointer;box-sizing:border-box;
-  font-family:"Halyard Display";font-weight:600;font-size:17px;color:#fff;letter-spacing:.2px;
-  background:linear-gradient(135deg,#4E00C9 0%,#8000ff 55%,#AC68F2 100%);
-  box-shadow:0 8px 20px rgba(108,0,214,.32), inset 0 1px 0 rgba(255,255,255,.25);
-  transition:transform .14s ease, box-shadow .14s ease, filter .14s ease;}
-.btn-brag:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 12px 26px rgba(108,0,214,.42), inset 0 1px 0 rgba(255,255,255,.3);}
+  background:linear-gradient(120deg,#1a0b38 0%,#2a1466 26%,#3f1aae 56%,#4E00C9 82%,#7b34ef 100%);
+  box-shadow:0 8px 20px rgba(40,10,90,.38), inset 0 1px 0 rgba(255,255,255,.22);
+  transition:transform .16s ease, box-shadow .16s ease, filter .16s ease;}
+.btn-brag:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 12px 28px rgba(60,15,130,.46), inset 0 1px 0 rgba(255,255,255,.28);}
 .btn-brag:active{transform:translateY(0);}
-.btn-brag .spark{font-size:18px;line-height:1;}
+.btn-brag .brag-label{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px;
+  font-family:"Halyard Display";font-weight:600;font-size:17px;color:#fff;letter-spacing:.2px;
+  text-shadow:0 1px 6px rgba(20,8,40,.4);}
+.btn-brag .spark{font-size:18px;line-height:1;color:#EBA6FF;}
+/* glide-through shimmer (like the banner) */
+.btn-brag::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;
+  background:linear-gradient(66deg,transparent 42%,rgba(255,255,255,.5) 50%,transparent 58%);
+  transform:translateX(-130%);animation:brag-shine 5s ease-in-out infinite;}
+@keyframes brag-shine{0%{transform:translateX(-130%)}42%{transform:translateX(130%)}100%{transform:translateX(130%)}}
 
 /* ===================== Rating widget ===================== */
 .rating{margin-top:22px;background:var(--green-bg);border-top:2px solid var(--green-line);border-radius:0 0 4px 4px;padding:26px 30px;position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;}

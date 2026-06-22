@@ -77,7 +77,7 @@ export default function BookingCard({ booking, onBrag }) {
                   for completed (rateable) bookings. */}
               {booking.receipt && (
                 <button className="btn-brag" onClick={() => onBrag(booking)}>
-                  <span className="spark">✦</span> Brag Receipt
+                  <span className="brag-label"><span className="spark">✦</span> Brag Receipt</span>
                 </button>
               )}
             </div>
