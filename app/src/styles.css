@@ -3,23 +3,24 @@
 @font-face { font-family:"Halyard Display"; src:url("/fonts/Halyard-Display-Medium.ttf")   format("truetype"); font-weight:500; font-style:normal; font-display:swap; }
 @font-face { font-family:"Halyard Display"; src:url("/fonts/Halyard-Display-SemiBold.ttf") format("truetype"); font-weight:600; font-style:normal; font-display:swap; }
 @font-face { font-family:"Halyard Display"; src:url("/fonts/Halyard-Display-Bold.ttf")     format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Halyard Text"; src:url("/fonts/Halyard-Text-Light.ttf")     format("truetype"); font-weight:300; font-style:normal; font-display:swap; }
 @font-face { font-family:"Halyard Text"; src:url("/fonts/Halyard-Text-Regular.ttf")  format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
 @font-face { font-family:"Halyard Text"; src:url("/fonts/Halyard-Text-Medium.ttf")   format("truetype"); font-weight:500; font-style:normal; font-display:swap; }
 @font-face { font-family:"Halyard Text"; src:url("/fonts/Halyard-Text-SemiBold.ttf") format("truetype"); font-weight:600; font-style:normal; font-display:swap; }
 
 /* ===================== Tokens (bookings page) ===================== */
 :root{
-  --purple:#8000ff;
-  --purple-press:#6a00d6;
-  --ink:#2b2b2b;
-  --ink-strong:#1d1d1d;
-  --line:#e8e8e8;
-  --chip:#f2f2f2;
-  --pink:#e5006d;
+  --purple:#6600cc;          /* Headout interactive purple (tabs, CTAs) — measured from live site */
+  --purple-press:#52009f;
+  --ink:#444444;             /* body/meta ink on the live site is #444, not near-black */
+  --ink-strong:#444444;      /* titles/headings on the bookings page are also #444 */
+  --line:#e2e2e2;
+  --chip:#f0f0f0;
+  --pink:#e5006e;
   --red:#e03131;
-  --green-bg:#eef8ee;
+  --green-bg:#f2fdeb;
   --green-line:#7bc47f;
-  --maxw:1680px;
+  --maxw:1200px;
 }
 *{box-sizing:border-box;}
 html,body,#root{margin:0;padding:0;}
@@ -32,63 +33,63 @@ body{
 }
 a{color:inherit;}
 .disp{font-family:"Halyard Display",sans-serif;}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 64px;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0;}
+@media (max-width:1248px){.wrap{padding:0 24px;}}
 
 /* ===================== Header ===================== */
 .site-header{padding-top:28px;}
 .topbar{display:flex;align-items:center;gap:28px;}
-.logo{display:flex;align-items:center;gap:10px;color:var(--purple);text-decoration:none;flex:0 0 auto;}
-.logo svg{display:block;}
-.logo .word{font-family:"Halyard Display";font-weight:700;font-size:30px;letter-spacing:-1px;color:var(--purple);}
+.logo{display:flex;align-items:center;text-decoration:none;flex:0 0 auto;}
+.logo-img{display:block;height:24px;width:auto;}
 .search{
   flex:1 1 auto;max-width:560px;display:flex;align-items:center;gap:12px;
   background:#f7f7f7;border:1px solid #ededed;border-radius:12px;
-  padding:14px 18px;color:#8a8a8a;font-size:16px;font-weight:500;
+  padding:14px 18px;color:#8a8a8a;font-size:15px;font-weight:400;
 }
 .search svg{flex:0 0 auto;margin-left:auto;}
 .top-right{display:flex;align-items:center;gap:26px;margin-left:auto;flex:0 0 auto;}
-.top-right .link{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink-strong);font-weight:600;font-size:16px;}
-.top-right .lang{font-weight:600;color:var(--ink-strong);font-size:16px;}
+.top-right .link{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink-strong);font-weight:500;font-size:14px;}
+.top-right .lang{font-weight:500;color:var(--ink-strong);font-size:14px;}
 .avatar{width:44px;height:44px;border-radius:50%;border:1px solid #e3e3e3;background-image:linear-gradient(135deg,#c9bdf2,#a98ee8);}
 .site-nav{margin-top:22px;}
 .navrow{display:flex;align-items:center;gap:34px;}
-.navrow a{text-decoration:none;color:var(--ink);font-weight:500;font-size:16.5px;white-space:nowrap;}
-.navrow .cats{display:flex;align-items:center;gap:10px;font-weight:600;}
-.navrow .app{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--ink);}
+.navrow a{text-decoration:none;color:var(--ink);font-weight:300;font-size:15px;white-space:nowrap;}
+.navrow .cats{display:flex;align-items:center;gap:10px;font-weight:300;color:#666;}
+.navrow .app{margin-left:auto;display:flex;align-items:center;gap:8px;font-weight:300;color:#666;}
 
 /* ===================== Page title + tabs ===================== */
-.bookings-main{margin-top:40px;}
-.bookings-main h1{font-family:"Halyard Display";font-weight:700;font-size:34px;letter-spacing:-0.5px;color:var(--ink-strong);margin:0 0 26px;}
-.tabs{display:flex;gap:40px;border-bottom:1px solid var(--line);}
-.tab{padding-bottom:14px;font-weight:600;font-size:18px;color:#9a9a9a;text-decoration:none;position:relative;background:none;border:0;cursor:pointer;font-family:inherit;}
-.tab.active{color:var(--purple);}
+.bookings-main{margin-top:32px;}
+.bookings-main h1{font-family:"Halyard Display";font-weight:500;font-size:24px;letter-spacing:-0.2px;color:var(--ink-strong);margin:0 0 20px;}
+.tabs{display:flex;gap:36px;border-bottom:1px solid var(--line);}
+.tab{padding-bottom:14px;font-weight:300;font-size:17px;color:#9f9f9f;text-decoration:none;position:relative;background:none;border:0;cursor:pointer;font-family:inherit;}
+.tab.active{color:var(--purple);font-weight:400;}
 .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;background:var(--purple);border-radius:2px;}
 
 /* ===================== Booking list ===================== */
-.list{display:flex;flex-direction:column;gap:28px;margin-top:34px;padding-bottom:80px;}
-.card{border:1px solid var(--line);border-radius:16px;padding:26px;overflow:hidden;background:#fff;}
-.card-inner{display:flex;gap:34px;}
-.thumb{flex:0 0 230px;height:230px;border-radius:12px;overflow:hidden;background:#e9e9ec;position:relative;}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);opacity:.9;}
+.list{display:flex;flex-direction:column;gap:20px;margin-top:24px;padding-bottom:80px;}
+.card{border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;background:#fff;}
+.card-inner{display:flex;gap:16px;padding:16px;}
+.thumb{flex:0 0 300px;height:180px;border-radius:8px;overflow:hidden;background:#e9e9ec;position:relative;}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);opacity:.92;}
 .cbody{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
 .row1{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
-.ctitle{font-family:"Halyard Display";font-weight:700;font-size:23px;line-height:1.25;color:var(--ink-strong);margin:0;}
-.price{font-family:"Halyard Display";font-weight:700;font-size:22px;color:var(--ink-strong);white-space:nowrap;}
-.bid{display:inline-block;margin-top:14px;border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:15px;color:var(--ink);}
-.bid b{font-weight:700;color:var(--ink-strong);}
-.divider{border:0;border-top:1px dashed #dcdcdc;margin:20px 0;}
+.ctitle{font-family:"Halyard Display";font-weight:500;font-size:21px;line-height:28px;color:var(--ink-strong);margin:0;}
+.price{font-family:"Halyard Display";font-weight:500;font-size:20px;color:var(--ink-strong);white-space:nowrap;}
+.bid{display:inline-block;margin-top:10px;border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:13px;font-weight:300;color:var(--ink);}
+.bid b{font-weight:500;color:var(--ink-strong);}
+.divider{border:0;border-top:1px dashed var(--line);margin:16px 0;}
 .row2{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
 .meta{display:flex;flex-direction:column;gap:12px;min-width:0;align-items:flex-start;}
-.meta .line{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:16.5px;font-weight:500;}
+.meta .line{display:flex;align-items:center;gap:10px;color:#666;font-size:15px;font-weight:300;}
 .meta .line svg{flex:0 0 auto;color:#8a8a8a;}
-.inclusions{color:var(--pink);font-weight:600;font-size:16px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;}
-.row2-right{display:flex;flex-direction:column;align-items:flex-end;gap:16px;border-left:1px dashed #dcdcdc;padding-left:34px;align-self:stretch;justify-content:center;}
-.status-cancelled{display:flex;align-items:center;gap:10px;color:var(--red);font-weight:600;font-size:16.5px;}
-.btn{display:inline-flex;align-items:center;justify-content:center;width:228px;background:var(--chip);color:var(--purple);border:0;border-radius:14px;padding:15px 24px;font-family:"Halyard Display";font-weight:600;font-size:17px;cursor:pointer;text-decoration:none;box-sizing:border-box;}
-.btn:hover{background:#ececec;}
+.inclusions{color:var(--pink);font-weight:500;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;}
+.row2-right{display:flex;flex-direction:column;align-items:flex-end;gap:14px;border-left:1px dashed var(--line);padding-left:28px;align-self:stretch;justify-content:center;}
+.status-cancelled{display:flex;align-items:center;gap:10px;color:var(--red);font-weight:500;font-size:15px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:320px;height:48px;background:var(--chip);color:var(--purple);border:0;border-radius:12px;padding:12px 16px;font-family:"Halyard Display";font-weight:500;font-size:16px;cursor:pointer;text-decoration:none;box-sizing:border-box;}
+.btn:hover{background:#e9e9e9;}
 
 /* Brag Receipt CTA — Twilight Tides palette + gliding shimmer */
-.btn-brag{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;width:228px;padding:15px 24px;
+.btn-brag{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;width:320px;height:48px;padding:12px 24px;
   border:0;border-radius:14px;cursor:pointer;box-sizing:border-box;
   background:linear-gradient(120deg,#1a0b38 0%,#2a1466 26%,#3f1aae 56%,#4E00C9 82%,#7b34ef 100%);
   box-shadow:0 8px 20px rgba(40,10,90,.38), inset 0 1px 0 rgba(255,255,255,.22);
@@ -106,16 +107,24 @@ a{color:inherit;}
 @keyframes brag-shine{0%{transform:translateX(-130%)}42%{transform:translateX(130%)}100%{transform:translateX(130%)}}
 
 /* ===================== Rating widget ===================== */
-.rating{margin-top:22px;background:var(--green-bg);border-top:2px solid var(--green-line);border-radius:0 0 4px 4px;padding:26px 30px;position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.rating::before{content:"";position:absolute;top:-9px;left:34px;width:16px;height:16px;background:var(--green-bg);border-left:2px solid var(--green-line);border-top:2px solid var(--green-line);transform:rotate(45deg);}
-.rating .q{font-family:"Halyard Display";font-weight:600;font-size:19px;color:var(--ink-strong);}
-.stars{display:flex;gap:12px;margin-top:14px;}
+.rating{background:var(--green-bg);border-top:1.5px solid var(--green-line);border-radius:0 0 16px 16px;padding:14px 16px;position:relative;display:flex;flex-direction:column;gap:14px;}
+.rating::before{content:"";position:absolute;top:-9px;left:34px;width:16px;height:16px;background:var(--green-bg);border-left:1.5px solid var(--green-line);border-top:1.5px solid var(--green-line);transform:rotate(45deg);}
+/* row 1: question + collapse chevron */
+.rating-head{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.rating .q{font-family:"Halyard Text";font-weight:500;font-size:15px;color:#666;}
+.rating-chev{background:none;border:0;padding:4px;cursor:pointer;color:#666;line-height:0;display:flex;}
+.rating-chev svg{transition:transform .2s ease;}
+.rating.collapsed .rating-chev svg{transform:rotate(180deg);}
+.rating-rated{font-family:"Halyard Text";font-weight:500;font-size:15px;color:#3a7a3a;}
+/* row 2: stars + submit */
+.rating-row{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.rating.collapsed .rating-row{display:none;}
+.stars{display:flex;gap:10px;}
 .stars button{background:none;border:0;padding:0;cursor:pointer;color:#c9c9c9;line-height:0;}
 .stars button.on{color:#f5b50a;}
-.submit{border:0;border-radius:12px;padding:16px 40px;font-family:"Halyard Display";font-weight:600;font-size:17px;white-space:nowrap;}
+.submit{border:0;border-radius:12px;padding:13px 34px;font-family:"Halyard Display";font-weight:500;font-size:16px;white-space:nowrap;min-height:48px;}
 .submit[disabled]{background:#c4c4c4;color:#fff;cursor:not-allowed;}
 .submit:not([disabled]){background:var(--purple);color:#fff;cursor:pointer;}
-.rating-left{display:flex;flex-direction:column;}
 
 /* ===================== Brag Receipt modal ===================== */
 .br-overlay{
@@ -209,7 +218,7 @@ a{color:inherit;}
   transition:transform .46s cubic-bezier(.16,1,.3,1);}
 .br-tabs.is-portal .br-tab-thumb{transform:translateX(100%);}
 .br-tabs button{position:relative;z-index:1;flex:1;border:0;background:none;cursor:pointer;white-space:nowrap;
-  font-family:"Halyard Display";font-weight:600;font-size:14px;color:#73737d;padding:8px 20px;border-radius:999px;
+  font-family:"Halyard Display";font-weight:400;font-size:14px;color:#73737d;padding:8px 20px;border-radius:999px;
   transition:color .22s ease;}
 .br-tabs button.on{color:var(--purple);}
 
@@ -331,7 +340,7 @@ a{color:inherit;}
   .bookings-main h1{font-size:28px;}
   .ctitle{font-size:20px;}
   .row1{flex-wrap:wrap;}
-  .rating{flex-direction:column;align-items:stretch;gap:16px;}
+  .rating-row{flex-direction:column;align-items:stretch;gap:16px;}
   .submit{width:100%;}
 }
 /* Modal becomes a bottom sheet on phones */

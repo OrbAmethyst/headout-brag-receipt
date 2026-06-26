@@ -1,5 +1,3 @@
-import HeadoutLogo from "./HeadoutLogo.jsx";
-
 const NAV = [
   "Bestsellers",
   "Uffizi Gallery",
@@ -13,12 +11,11 @@ export default function Header() {
       <div className="wrap">
         <div className="topbar">
           <a className="logo" href="#" aria-label="Headout home">
-            <HeadoutLogo />
-            <span className="word">headout</span>
+            <img className="logo-img" src="/assets/headout-wordmark%20purps.svg" alt="Headout logo. Link to home." />
           </a>
 
           <div className="search">
-            <span>Search for experiences and cities</span>
+            <span>Search for</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" strokeWidth="2" strokeLinecap="round">
               <circle cx="11" cy="11" r="7" />
               <path d="M21 21l-4-4" />
@@ -26,7 +23,7 @@ export default function Header() {
           </div>
 
           <div className="top-right">
-            <span className="lang">English / USD</span>
+            <span className="lang">English / EUR</span>
             <a className="link" href="#">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="9" />
